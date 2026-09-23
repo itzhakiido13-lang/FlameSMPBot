@@ -1,4 +1,13 @@
 import { shopItems, getItemById, getItemsByType, getItemPrice, validatePurchase } from './items.js';
+// חפש מקום שבודק את יתרת המשתמש, ושנה אותו ל-XP:
+const userXp = userData.xp || 0;
+
+if (userXp < item.xpPrice) {
+    return { 
+        valid: false, 
+        reason: `אין לך מספיק XP! המחיר הוא ${item.xpPrice} XP, ואצלך יש ${userXp} XP.` 
+    };
+}
 import { botConfig } from '../bot.js';
 
 const { currency } = botConfig.economy;
